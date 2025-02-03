@@ -32,13 +32,6 @@ db.connect(err => {
     console.log("Підключено до MySQL");
 });
 
-// 📌 Отримання списку користувачів
-app.get("/", (req, res) => {
-    db.query("SELECT * FROM user", (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(result);
-    });
-});
 
 app.get("/users", (req, res) => {
     db.query("SELECT * FROM user", (err, result) => {

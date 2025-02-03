@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import reactLogo from './assets/react.svg'
 
@@ -23,25 +23,53 @@ import HeaderButton from './HeaderButtons/HeaderButton';
 function App() {
   const [More_Info, setMore_Info] = useState(true);
   const UserName = "Orest"
-  const [users, setUsers] = useState([]);
+  const [usersDb, setUsersDb] = useState([]);
+  const [users_find, setUsers_find] = useState([]);
 
-  useEffect(() => {
+  const inputRef = useRef(null);
+  const imgRef = useRef(null);
+  const usernameRef = useRef(null);
+
+  /*useEffect(() => {
       axios.get("http://localhost:5000/users")
-          .then(response => setUsers(response.data))
+          .then(response => setUsersDb(response.data))
           .catch(error => console.error("Помилка:", error));
-  }, []);
+  }, []);*/
+
+  const id_input = () => {
+    axios.get("http://localhost:5000/users")
+    .then(response => setUsers_find(response.data))
+    .catch(error => console.error("Помилка:", error));
+
+    const user_id = inputRef.current.value;
+    const foundUser = users_find.find(user => user.ID == user_id); // Знаходимо користувача
+  
+    if (foundUser) {
+      console.log(`\nID: ${foundUser.ID} \nUsername: ${foundUser.username}\n`);
+      usernameRef.current.textContent = `Name: ${foundUser.username}`
+
+    } else {
+      console.log("Користувача не знайдено");
+    }
+  };
+
+  const show_all_db = () => {
+    axios.get("http://localhost:5000/users")
+    .then(response => setUsersDb(response.data))
+    .catch(error => console.error("Помилка:", error));
+  }
 
   return (
     <>
       {/*{USERS.map((users) => (
         <User key={users.key} user_name={users.name} img={reactLogo} ></User>
       ))}*/}
-      <h2>Користувачі</h2>
-        <ul>
-          {users.map(user => (
-            <li key={user.ID}>{user.username} - {user.password}</li>
-          ))}
-        </ul>
+
+
+      <input ref={inputRef} type="text" placeholder="Input your ID" className="test_id_input"></input>
+      <button onClick={id_input}>Confirm</button>
+      <button onClick={show_all_db}>Show All Data Base</button>
+
 
       <div className='header'>
         <HeaderButton icon={home_} main_name='Main menu' />
@@ -54,8 +82,8 @@ function App() {
       <div className='user_container'>
 
        <div className='icon_holder'>
-        <input type='image' src={pfp_} className='avatar' ></input>
-        <p className='username'>Name: {UserName}</p>
+        <input ref={imgRef} type='image' src={pfp_} className='avatar' ></input>
+        <p ref={usernameRef} className='username'>Name: {UserName}</p>
        </div>
 
        <div className='project_holder'>
@@ -68,8 +96,14 @@ function App() {
        </div>
 
       </div>
-      <div className='main_container'>
 
+      <div className='main_container'>
+      <h2>Користувачі</h2>
+        <ul>
+          {usersDb.map(user => (
+            <p key={user.ID}>{user.ID} - {user.username} - {user.password}</p>
+          ))}
+        </ul>
       </div>
     </>
   )
