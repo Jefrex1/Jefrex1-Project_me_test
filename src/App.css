@@ -1,0 +1,117 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: .5vw;
+  text-align: center;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.header {
+  position: sticky;
+  top: 10px;
+  bottom: 1000px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 16px;
+  background-color: rgba(86, 86, 86, 1);
+  box-shadow: 0px 0px 15px rgb(61, 61, 61);
+}
+
+.user_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  top: 60px;
+  margin: 5px auto;
+  padding: 2vw;
+  border-radius: 16px;
+  width: 70vw;
+  height: 35vw;
+  background-color: rgba(86, 86, 86, 1);
+
+  transition: all 0.25s ease-in-out 0.1s;
+}
+
+.user_container div {
+  background-color: rgb(110, 110, 110);
+  border-radius: 8px;
+}
+
+.icon_holder {
+  width: 20%;
+  height: 100%;
+  margin-right: 3%;
+}
+
+.project_holder {
+  width: 40%;
+  height: 100%;
+  margin-right: 3%;
+}
+
+.updatelog_me_holder {
+  background-color: rgba(240, 248, 255, 0) !important;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+  width: 35%;
+}
+
+.updatelog_holder {
+  width: 100%;
+  height: 75%;
+  margin-bottom: 8%;
+}
+
+.me_holder {
+  width: 100%;
+  height: 25%;
+}
+
+.avatar {
+  width: 100%;
+  position: static;
+  background-color: aliceblue;
+  border-radius: 8px 8px 0px 0px;
+  border-style: solid;
+  border-color: #ddc0c0;
+  border-width: 1px;
+  box-shadow: 0px 0px 1.75px 0px rgba(255, 255, 255, 1),
+  0px 0px 3.49px 0px rgba(255, 255, 255, 1),
+  0px 0px 12.22px 0px rgba(255, 255, 255, 1),
+  0px 0px 24.44px 0px rgba(230, 132, 132, 1),
+  0px 0px 41.9px 0px rgba(230, 132, 132, 1),
+  0px 0px 73.33px 0px rgba(230, 132, 132, 1);
+}
+
+.username {
+  font-size: 1.3vw;
+  top: 30%;
+}
+
+.visible {
+  opacity: 1 !important;
+}
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  top: 60px;
+  margin: 25px auto;
+  padding: 1.5%;
+  border-radius: 16px;
+  width: 70vw;
+  height: 175vw;
+  background-color: rgba(86, 86, 86, 1);
+
+  transition: all 0.25s ease-in-out 0.1s;
+}
